@@ -11,61 +11,117 @@
       color: #2e2c4c;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
+
+    .bubble-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      width: var(--size);
+      height: var(--size);
+      background: radial-gradient(circle at 30% 30%, #f3d1f4, #e9ecf8);
+      border-radius: 50%;
+      opacity: 0.6;
+      left: var(--left);
+      animation: floatUp var(--duration) linear infinite;
+      animation-delay: var(--delay);
+      filter: blur(4px);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateY(-50vh) scale(1.1);
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1);
+        opacity: 0.3;
+      }
+    }
+
     .container {
       padding: 40px 80px;
+      position: relative;
+      z-index: 1;
     }
+
     .stats {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       margin-bottom: 40px;
     }
+
     .stat {
       flex: 1 1 20%;
       margin-bottom: 20px;
       text-align: center;
     }
+
     .stat h2 {
       margin: 0;
       font-size: 28px;
       color: #6d5cae;
     }
+
     .stat p {
       margin: 4px 0 0;
     }
+
     .about {
       display: flex;
       align-items: center;
       gap: 40px;
       margin-bottom: 40px;
     }
+
     .about img {
       max-width: 300px;
       border-radius: 12px;
     }
+
     .about-text {
       max-width: 500px;
     }
+
     blockquote {
       font-size: 20px;
       font-style: italic;
       margin: 40px 0;
       color: #574b90;
     }
+
     blockquote footer {
       text-align: right;
       margin-top: 10px;
     }
+
     h2 {
       font-size: 28px;
       margin-bottom: 20px;
     }
+
     .spaces {
       display: flex;
       gap: 20px;
       flex-wrap: wrap;
     }
+
     .space {
       flex: 1 1 22%;
       background: #ffffff;
@@ -74,27 +130,41 @@
       text-align: center;
       box-shadow: 0 2px 8px rgba(0, 0, 50, 0.08);
     }
+
     .space img {
       width: 100%;
       border-radius: 10px;
       height: 150px;
       object-fit: cover;
     }
-    .space button {
+
+    .space a {
+      display: inline-block;
       margin-top: 10px;
       background-color: #7a6ee6;
       color: #fff;
-      border: none;
+      text-decoration: none;
       padding: 8px 16px;
       border-radius: 6px;
       cursor: pointer;
     }
-    .space button:hover {
+
+    .space a:hover {
       background-color: #594bcf;
     }
   </style>
 </head>
 <body>
+
+  <!-- Bubbles Background -->
+  <div class="bubble-container">
+    <div class="bubble" style="--size: 80px; --left: 10%; --duration: 25s; --delay: 0s;"></div>
+    <div class="bubble" style="--size: 60px; --left: 30%; --duration: 30s; --delay: 5s;"></div>
+    <div class="bubble" style="--size: 100px; --left: 50%; --duration: 35s; --delay: 10s;"></div>
+    <div class="bubble" style="--size: 70px; --left: 70%; --duration: 28s; --delay: 3s;"></div>
+    <div class="bubble" style="--size: 90px; --left: 85%; --duration: 32s; --delay: 8s;"></div>
+  </div>
+
   <div class="container">
     <div class="stats">
       <div class="stat">
@@ -131,24 +201,24 @@
     <h2>Explore Spaces</h2>
     <div class="spaces">
       <div class="space">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/Ocean_wave.jpg" alt="Ocean Calm" />
+        <img src="https://i.postimg.cc/MG6YdxMD/pexels-media-457881.jpg" alt="Ocean Calm" />
         <p>Ocean Calm</p>
-        <button>Enter</button>
+        <a href="ocean-calm.html">Enter</a>
       </div>
       <div class="space">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Beach_in_Thailand.jpg" alt="Stellar Night" />
+        <img src="https://i.postimg.cc/t4LBRF81/pexels-media-9263387.jpg" alt="Stellar Night" />
         <p>Stellar Night</p>
-        <button>Enter</button>
+        <a href="stellar-night.html">Enter</a>
       </div>
       <div class="space">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/57/Lake_mapourika_NZ.jpeg" alt="Floating Garden" />
+        <img src="https://i.postimg.cc/1Xhn7c7Q/pexels-media-31858215.jpg" alt="Floating Garden" />
         <p>Floating Garden</p>
-        <button>Enter</button>
+        <a href="floating-garden.html">Enter</a>
       </div>
       <div class="space">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Crystal_cave_Iceland.jpg" alt="Crystal Cave" />
+        <img src="https://i.postimg.cc/rmvxXLm7/pexels-media-18138565.jpg" alt="Crystal Cave" />
         <p>Crystal Cave</p>
-        <button>Enter</button>
+        <a href="crystal-cave.html">Enter</a>
       </div>
     </div>
   </div>
